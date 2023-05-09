@@ -1,0 +1,7 @@
+C:\Users\ruaa.abd\Documents\GitHub\Massarat_New\Massarat-BackEnd\Massarat-BackEnd\obj\Debug\net6.0\Massarat-BackEnd.csproj.AssemblyReference.cache
+C:\Users\ruaa.abd\Documents\GitHub\Massarat_New\Massarat-BackEnd\Massarat-BackEnd\obj\Debug\net6.0\Massarat-BackEnd.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\ruaa.abd\Documents\GitHub\Massarat_New\Massarat-BackEnd\Massarat-BackEnd\obj\Debug\net6.0\Massarat-BackEnd.AssemblyInfoInputs.cache
+C:\Users\ruaa.abd\Documents\GitHub\Massarat_New\Massarat-BackEnd\Massarat-BackEnd\obj\Debug\net6.0\Massarat-BackEnd.AssemblyInfo.cs
+C:\Users\ruaa.abd\Documents\GitHub\Massarat_New\Massarat-BackEnd\Massarat-BackEnd\obj\Debug\net6.0\Massarat-BackEnd.csproj.CoreCompileInputs.cache
+C:\Users\ruaa.abd\Documents\GitHub\Massarat_New\Massarat-BackEnd\Massarat-BackEnd\obj\Debug\net6.0\Massarat-BackEnd.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\ruaa.abd\Documents\GitHub\Massarat_New\Massarat-BackEnd\Massarat-BackEnd\obj\Debug\net6.0\Massarat-BackEnd.MvcApplicationPartsAssemblyInfo.cache
