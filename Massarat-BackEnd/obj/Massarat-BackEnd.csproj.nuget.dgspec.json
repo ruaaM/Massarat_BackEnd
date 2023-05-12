@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\ruaa.abd\\Documents\\GitHub\\Massarat_New\\Massarat-BackEnd\\Massarat-BackEnd\\Massarat-BackEnd.csproj": {}
+    "C:\\Users\\ruaa.abd\\Documents\\GitHub\\Massarat-BackEnd\\Massarat-BackEnd\\Massarat-BackEnd.csproj": {}
   },
   "projects": {
-    "C:\\Users\\ruaa.abd\\Documents\\GitHub\\Massarat_New\\Massarat-BackEnd\\Massarat-BackEnd\\Massarat-BackEnd.csproj": {
+    "C:\\Users\\ruaa.abd\\Documents\\GitHub\\Massarat-BackEnd\\Massarat-BackEnd\\Massarat-BackEnd.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\ruaa.abd\\Documents\\GitHub\\Massarat_New\\Massarat-BackEnd\\Massarat-BackEnd\\Massarat-BackEnd.csproj",
+        "projectUniqueName": "C:\\Users\\ruaa.abd\\Documents\\GitHub\\Massarat-BackEnd\\Massarat-BackEnd\\Massarat-BackEnd.csproj",
         "projectName": "Massarat-BackEnd",
-        "projectPath": "C:\\Users\\ruaa.abd\\Documents\\GitHub\\Massarat_New\\Massarat-BackEnd\\Massarat-BackEnd\\Massarat-BackEnd.csproj",
+        "projectPath": "C:\\Users\\ruaa.abd\\Documents\\GitHub\\Massarat-BackEnd\\Massarat-BackEnd\\Massarat-BackEnd.csproj",
         "packagesPath": "C:\\Users\\ruaa.abd\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\ruaa.abd\\Documents\\GitHub\\Massarat_New\\Massarat-BackEnd\\Massarat-BackEnd\\obj\\",
+        "outputPath": "C:\\Users\\ruaa.abd\\Documents\\GitHub\\Massarat-BackEnd\\Massarat-BackEnd\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -43,6 +43,14 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "dependencies": {
+            "AutoMapper": {
+              "target": "Package",
+              "version": "[12.0.1, )"
+            },
+            "AutoMapper.Extensions.Microsoft.DependencyInjection": {
+              "target": "Package",
+              "version": "[12.0.1, )"
+            },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
               "version": "[7.0.5, )"
@@ -65,7 +73,7 @@
             },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
-              "version": "[6.2.3, )"
+              "version": "[6.5.0, )"
             }
           },
           "imports": [

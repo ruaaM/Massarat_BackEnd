@@ -48,18 +48,7 @@ namespace Massarat.Controllers
 		
 
 
-		[HttpGet]
-		[Route("api/[Controller]/[Action]")]
-		public IActionResult GetStudentByName(String? Name)
-		{
-			if (Name == null)
-				return NotFound();
-			var StudentName = _context.Student.Where(N => N.Name == Name).FirstOrDefault();
-			if(StudentName!= null)
-			return Ok(StudentName);
-			return BadRequest(); 
 
-		}
 
 		[HttpPost]
 		[Route("api/[Controller]/[Action]")]
