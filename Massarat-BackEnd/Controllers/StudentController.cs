@@ -44,8 +44,10 @@ namespace Massarat_BackEnd.Controllers
 			if (studentDTO.Name == null
 				&&studentDTO.PhoneNumber == null && studentDTO.Age == 0)
 				return StatusCode(404, "Enter Some data !");
-
-			var StudentToUpdate = _context.Student.Where(s => s.Id == StudentId).FirstOrDefault();
+			//before updATE
+			var StudentToUpdate = _context.Student
+				.AsNoTracking()
+				.FirstOrDefault(s => s.Id == StudentId);
 			if(StudentToUpdate == null)
 				return NoContent();
 
@@ -59,6 +61,7 @@ namespace Massarat_BackEnd.Controllers
 
 			var UpdatedStudent = _mapper.Map<StudentDTO,Student>(studentDTO);
 			UpdatedStudent.Id = StudentToUpdate.Id;
+			UpdatedStudent.Salary = StudentToUpdate.Salary;
 
 			_context.Student.Update(UpdatedStudent);
 			_context.SaveChanges();

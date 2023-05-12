@@ -9,6 +9,8 @@ namespace Massarat_BackEnd.Helper
 		public MappingProfile()
 		{
 			CreateMap<Student, StudentDTO>();
+			CreateMap<Project, ProjectDTO>();
+			CreateMap<ProjectDTO, Project>();
 			CreateMap<StudentDTO, Student>();
 			CreateMap<MentorDTO, Mentor>();
 			CreateMap<Mentor, MentorDTO>();

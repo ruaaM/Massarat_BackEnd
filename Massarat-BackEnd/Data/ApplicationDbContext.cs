@@ -13,7 +13,6 @@ namespace Massarat.Data
 		: base(options)
 		{
 		}
-
 		public DbSet<Mentor> Mentor { get; set; }
 		public DbSet<Project> Project { get; set; }
 		public DbSet<Student> Student { get; set; }
