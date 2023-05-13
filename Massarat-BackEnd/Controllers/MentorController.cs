@@ -1,6 +1,7 @@
 ﻿using Massarat.Data;
 using Massarat.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace Massarat.Controllers
 {
@@ -52,7 +53,7 @@ namespace Massarat.Controllers
 
 		[HttpPost]
 		[Route("api/[Controller]/[Action]")]
-		public IActionResult CreateMentor(MentorDTO mentorDTO)
+		public async Task<IActionResult> CreateMentor([FromBody] MentorDTO mentorDTO)
 		{
 			if (mentorDTO == null)
 				return NoContent();
@@ -67,16 +68,16 @@ namespace Massarat.Controllers
 				Status = true,
 				Gender = mentorDTO.Gender ?? false,
 			};
-			_context.Mentor.Add(Mentor);
-			_context.SaveChanges();
+			await _context.Mentor.AddAsync(Mentor);
+			await _context.SaveChangesAsync();
 			return Ok();
 		}
 		[HttpGet]	
 		[Route("api/[Controller]/[Action]")]
 
-		public List<MentorDTO> GetMentorsByAge(int? age)
+		public async Task<List<MentorDTO>> GetMentorsByAge(int? age)
 		{
-			var MentorsByAge = _context.Mentor.Where(a=>a.Age == age).ToList();
+			var MentorsByAge = await _context.Mentor.Where(a=>a.Age == age).ToListAsync();
 			List<MentorDTO> mentorListMentor =new List<MentorDTO>();
 			foreach(var Mentor in MentorsByAge)
 			{

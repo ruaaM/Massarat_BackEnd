@@ -1,6 +1,7 @@
 using Massarat.Data;
 using Microsoft.EntityFrameworkCore;
 using AutoMapper;
+using static System.Net.Mime.MediaTypeNames;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -20,12 +21,21 @@ if (app.Environment.IsDevelopment())
 {
 	app.UseSwagger();
 	app.UseSwaggerUI();
+	//app.UseExceptionHandler("/Error");
 }
+//if (!app.Environment.IsDevelopment())
+//{
+//	app.UseExceptionHandler("/error");
+//}
 
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
 
 app.MapControllers();
+
+//app.UseStatusCodePages();
+//app.UseStatusCodePages(Text.Plain, "Status Code Page: {0}");
+
 
 app.Run();

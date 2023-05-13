@@ -94,3 +94,5 @@ C:\Users\ruaa.abd\Documents\GitHub\Massarat-BackEnd\Massarat-BackEnd\obj\Debug\n
 C:\Users\ruaa.abd\Documents\GitHub\Massarat-BackEnd\Massarat-BackEnd\obj\Debug\net6.0\ref\Massarat-BackEnd.dll
 C:\Users\ruaa.abd\Documents\GitHub\Massarat-BackEnd\Massarat-BackEnd\bin\Debug\net6.0\AutoMapper.dll
 C:\Users\ruaa.abd\Documents\GitHub\Massarat-BackEnd\Massarat-BackEnd\bin\Debug\net6.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
+C:\Users\ruaa.abd\Documents\GitHub\Massarat-BackEnd\Massarat-BackEnd\bin\Debug\net6.0\Microsoft.AspNetCore.Authorization.dll
+C:\Users\ruaa.abd\Documents\GitHub\Massarat-BackEnd\Massarat-BackEnd\bin\Debug\net6.0\Microsoft.AspNetCore.Metadata.dll
