@@ -14,6 +14,7 @@ namespace Massarat.Models
 
         [Required]
 		public virtual int MentorId { get; set; }
+
 		[ForeignKey("Id")]
 		public virtual Mentor? Mentor { get; set; }
 

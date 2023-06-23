@@ -1,4 +1,5 @@
 ﻿using Massarat_BackEnd.DTO;
+using Massarat_BackEnd.Models;
 using Massarat_BackEnd.Services;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.IdentityModel.Tokens;
@@ -10,10 +11,10 @@ namespace Massarat_BackEnd.Service
 {
 	public class UserService : IUserService
 	{
-		private readonly UserManager<IdentityUser> _userManager;
-		private readonly SignInManager<IdentityUser> _signInManager;
+		private readonly UserManager<User> _userManager;
+		private readonly SignInManager<User> _signInManager;
         private readonly IConfiguration _configuration;
-        public UserService(UserManager<IdentityUser> userManager, SignInManager<IdentityUser> signInManager, IConfiguration configuration)
+        public UserService(UserManager<User> userManager, SignInManager<User> signInManager, IConfiguration configuration)
         {
 		  _userManager = userManager;
           _signInManager = signInManager;
@@ -42,7 +43,9 @@ namespace Massarat_BackEnd.Service
                 // Else we generate JSON Web Token
                 var TokenHandler = new JwtSecurityTokenHandler();
                 var TokenKey = Encoding.UTF8.GetBytes(_configuration["JWT:Key"]);
-                var TokenDescription = new SecurityTokenDescriptor
+               
+				
+				var TokenDescription = new SecurityTokenDescriptor
                 {
                     Subject = new ClaimsIdentity(new Claim[]
                     {
@@ -51,6 +54,8 @@ namespace Massarat_BackEnd.Service
                     Expires = DateTime.Now.AddHours(0.5),
                     SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(TokenKey), SecurityAlgorithms.HmacSha256Signature)
                 };
+
+
                 var Token = TokenHandler.CreateToken(TokenDescription);
                 return new UserResponse
                 {
@@ -83,10 +88,11 @@ namespace Massarat_BackEnd.Service
 				};
 			}
 
-			var user = new IdentityUser
-			{
+			var user = new User
+            {
 				PhoneNumber = registerDTO.mobileNumber,
-			UserName = registerDTO.mobileNumber,
+			    UserName = registerDTO.mobileNumber,
+				FirstName = registerDTO.mobileNumber,
 			};
 
 			var result = await _userManager.CreateAsync(user, registerDTO.Password);

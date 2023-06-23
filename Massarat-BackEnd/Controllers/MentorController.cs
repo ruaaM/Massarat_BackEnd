@@ -1,12 +1,13 @@
 ﻿using Massarat.Data;
 using Massarat.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 namespace Massarat.Controllers
 {
 
-	public class MentorController : Controller
+    public class MentorController : Controller
 	{
 		private readonly ApplicationDbContext _context;
 
@@ -14,10 +15,9 @@ namespace Massarat.Controllers
         {
 			_context = context;
 		}
-
+		[Authorize(Roles = "Admin")]
 		[HttpGet]
 		[Route("api/[Controller]/[Action]")]
-
 		public ICollection<Mentor> GetAllMentors()
 		{
 			return _context.Mentor.ToList();
@@ -32,6 +32,7 @@ namespace Massarat.Controllers
 
 
 		[HttpGet]
+		[Authorize(Roles ="User")]
 		[Route("api/[Controller]/[Action]")]
 		public IActionResult GetMentorByID(int? MentorId)
 		{
@@ -40,17 +41,12 @@ namespace Massarat.Controllers
 			var MentorInfo = _context.Mentor.Where(m => m.Id == MentorId).FirstOrDefault();
 			var MentorDTO = new MentorDTO
 			{
-				Name = MentorInfo.Name,
+				Name = MentorInfo.Name == null  ? "Ruaa" : MentorInfo.Name ,
 				Age = MentorInfo.Age,
 				PhoneNumber = MentorInfo.PhoneNumber
 			};
 			return Ok(MentorDTO);
 		}
-		
-
-
-
-
 		[HttpPost]
 		[Route("api/[Controller]/[Action]")]
 		public async Task<IActionResult> CreateMentor([FromBody] MentorDTO mentorDTO)

@@ -6,6 +6,7 @@ using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using Massarat_BackEnd.Services;
 using Massarat_BackEnd.Service;
+using Massarat_BackEnd.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -16,12 +17,11 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
    options.UseSqlServer(connectionString));
 
 
-builder.Services.AddIdentity<IdentityUser, IdentityRole>(options =>
+builder.Services.AddIdentity<User, IdentityRole>(options =>
 {
 	options.User.RequireUniqueEmail = false;
 	options.Password.RequiredLength = 6;
 	options.Password.RequireUppercase = true;
-
 
 }).AddEntityFrameworkStores<ApplicationDbContext>().AddDefaultTokenProviders();
 
@@ -44,7 +44,8 @@ builder.Services.AddAuthentication(auth =>
         ValidateIssuer = false,
         ValidateAudience = false,
         ValidateLifetime = false,
-        ValidateIssuerSigningKey = true
+        ValidateIssuerSigningKey = true,
+		
 
     };
 });
