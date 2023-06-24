@@ -22,7 +22,6 @@ builder.Services.AddIdentity<User, IdentityRole>(options =>
 	options.User.RequireUniqueEmail = false;
 	options.Password.RequiredLength = 6;
 	options.Password.RequireUppercase = true;
-
 }).AddEntityFrameworkStores<ApplicationDbContext>().AddDefaultTokenProviders();
 
 builder.Services.AddScoped<IUserService, UserService>();

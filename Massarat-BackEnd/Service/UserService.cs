@@ -14,11 +14,17 @@ namespace Massarat_BackEnd.Service
 		private readonly UserManager<User> _userManager;
 		private readonly SignInManager<User> _signInManager;
         private readonly IConfiguration _configuration;
-        public UserService(UserManager<User> userManager, SignInManager<User> signInManager, IConfiguration configuration)
+        private readonly RoleManager<IdentityRole> _roleManager;
+
+        public UserService(UserManager<User> userManager,
+			SignInManager<User> signInManager,
+            RoleManager<IdentityRole> roleManager,
+            IConfiguration configuration)
         {
 		  _userManager = userManager;
           _signInManager = signInManager;
 			_configuration = configuration;
+			_roleManager = roleManager;
 
         }
 
@@ -40,17 +46,27 @@ namespace Massarat_BackEnd.Service
             var result =await _signInManager.PasswordSignInAsync(UserinDB.UserName, loginDTO.Password, false, false);
             if (result.Succeeded)
             {
+				var userRoles = await _userManager.GetRolesAsync(UserinDB);
                 // Else we generate JSON Web Token
+                var claims = new List<Claim>();
+
+				foreach (var role in userRoles)
+				{
+					claims.Add(new Claim(ClaimTypes.Role, role));
+
+				}
+				claims.Add(new Claim(ClaimTypes.Name, loginDTO.MobileNum));
+
+
+
+
                 var TokenHandler = new JwtSecurityTokenHandler();
                 var TokenKey = Encoding.UTF8.GetBytes(_configuration["JWT:Key"]);
                
 				
 				var TokenDescription = new SecurityTokenDescriptor
                 {
-                    Subject = new ClaimsIdentity(new Claim[]
-                    {
-                    new Claim(ClaimTypes.Name, loginDTO.MobileNum)
-                    }),
+                    Subject = new ClaimsIdentity(claims),
                     Expires = DateTime.Now.AddHours(0.5),
                     SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(TokenKey), SecurityAlgorithms.HmacSha256Signature)
                 };

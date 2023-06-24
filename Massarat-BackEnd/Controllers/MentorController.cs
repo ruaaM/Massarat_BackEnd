@@ -30,7 +30,6 @@ namespace Massarat.Controllers
 			return _context.Project.Where(p=>p.Status == true).ToList();
 		}
 
-
 		[HttpGet]
 		[Authorize(Roles ="User")]
 		[Route("api/[Controller]/[Action]")]
