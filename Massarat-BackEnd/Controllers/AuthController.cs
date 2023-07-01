@@ -29,7 +29,7 @@ namespace Massarat_BackEnd.Controllers
 		}
         [HttpPost]
         [Route("auth/[Controller]/[Action]")]
-        public async Task<IActionResult> LoginAsync(LoginDTO loginDto)
+        public async Task<IActionResult> LoginAsync([FromBody] LoginDTO loginDto)
         {
             var result = await _userService.LoginAsync(loginDto);
 

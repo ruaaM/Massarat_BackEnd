@@ -15,7 +15,7 @@ namespace Massarat.Controllers
         {
 			_context = context;
 		}
-		[Authorize(Roles = "Admin")]
+		[Authorize]
 		[HttpGet]
 		[Route("api/[Controller]/[Action]")]
 		public ICollection<Mentor> GetAllMentors()
