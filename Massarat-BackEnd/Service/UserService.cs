@@ -58,8 +58,6 @@ namespace Massarat_BackEnd.Service
 				claims.Add(new Claim(ClaimTypes.Name, loginDTO.MobileNum));
 
 
-
-
                 var TokenHandler = new JwtSecurityTokenHandler();
                 var TokenKey = Encoding.UTF8.GetBytes(_configuration["JWT:Key"]);
                

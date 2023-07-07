@@ -3,9 +3,11 @@ using Massarat.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System.Linq;
 
 namespace Massarat.Controllers
 {
+    [Route("api/[Controller]/[Action]")]
 
     public class MentorController : Controller
 	{
@@ -15,13 +17,28 @@ namespace Massarat.Controllers
         {
 			_context = context;
 		}
-		[Authorize]
+		[Authorize (Roles ="Admin")]
 		[HttpGet]
-		[Route("api/[Controller]/[Action]")]
 		public ICollection<Mentor> GetAllMentors()
 		{
 			return _context.Mentor.ToList();
 		}
+		[HttpGet]
+		public async Task<List<Mentor>> GetMentorsByCount(int pageSize, int pageNum)
+		{
+			var AllMentors = await _context
+				.Mentor
+				.OrderByDescending(l=>l.Id)
+				.Skip((pageNum - 1) * pageSize)
+				.Take(pageSize)
+				.ToListAsync();
+
+			return AllMentors;
+
+		}
+
+
+		
 			[HttpGet]
 		[Route("api/[Controller]/[Action]")]
 
